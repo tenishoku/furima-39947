@@ -6,7 +6,7 @@ function item (){
     addTaxDom.innerHTML = Math.floor(priceInput * 10 /100)
     
     const addProfit = document.getElementById("profit");
-    addProfit.innerHTML = priceInput - addTaxDom.innerHTML
+    addProfit.innerHTML = (priceInput - addTaxDom.innerHTML).toLocaleString()
   });
 };
 
