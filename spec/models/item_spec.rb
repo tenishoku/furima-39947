@@ -55,7 +55,7 @@ RSpec.describe Item, type: :model do
       it '販売価格が空では商品出品できない' do
         @item.item_price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include('Item price is invalid', 'Item price is not a number')
+        expect(@item.errors.full_messages).to include('Item price is not a number')
       end
       it '商品名が40文字以上だと商品出品できない' do
         @item.item_name = '商品名が40文字以上だと商品出品できない商品名が40文字以上だと商品出品できない!!'
@@ -76,6 +76,36 @@ RSpec.describe Item, type: :model do
         @item.item_price = '７８９'
         @item.valid?
         expect(@item.errors.full_messages).to include('Item price is not a number')
+      end
+      it 'userが紐付いていない場合は商品出品できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
+      end
+      it 'カテゴリーが空では商品出品できない' do
+        @item.category_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
+      end
+      it '商品の状態が空では商品出品できない' do
+        @item.sales_status_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Sales status can't be blank")
+      end
+      it '配送料の負担が空では商品出品できない' do
+        @item.shipping_fee_status_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping fee status can't be blank")
+      end
+      it '発送元の地域が空では商品出品できない' do
+        @item.prefecture_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+      end
+      it '発送までの日数が空では商品出品できない' do
+        @item.scheduled_delivery_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Scheduled delivery can't be blank")
       end
     end
   end
