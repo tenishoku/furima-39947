@@ -23,11 +23,11 @@
 | ------------------------ | ---------- | --------------------------------- |
 | item_name                | string     | null: false                       |
 | item_info                | text       | null: false                       |
-| category_id              | integer    | null: false                       |
-| sales_status_id          | integer    | null: false                       |
-| shipping_fee_status_id   | integer    | null: false                       |
-| prefecture_id            | integer    | null: false                       |
-| scheduled_delivery_id    | integer    | null: false                       |
+| category_id              | integer    | numericality: { other_than: 1 }   |
+| sales_status_id          | integer    | numericality: { other_than: 1 }   |
+| shipping_fee_status_id   | integer    | numericality: { other_than: 1 }   |
+| prefecture_id            | integer    | numericality: { other_than: 1 }   |
+| scheduled_delivery_id    | integer    | numericality: { other_than: 1 }   |
 | item_price               | integer    | null: false                       |
 | user                     | references | null: false, foreign_key: true    |
 
