@@ -8,11 +8,10 @@ class OrderAddress
     
     validates :city
     validates :addresses
-    validates :phone_number
+    validates :phone_number, format: { with: /\A\d{10,11}\z/}
     # order_addressクラスにはアソシエーションを定義することはできないため,バリデーションを新たに設定
     validates :user_id
     validates :item_id
-    # validates :order_id
   end
 
    # ジャンルの選択が「---」の時は保存できないようにする
