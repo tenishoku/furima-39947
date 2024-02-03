@@ -1,6 +1,6 @@
 class OrderAddress
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture_id, :city, :addresses, :building, :phone_number, :user_id, :item_id, :order_id
+  attr_accessor :postal_code, :prefecture_id, :city, :addresses, :building, :phone_number, :user_id, :item_id, :order_id, :token
 
   with_options presence: true do
     # 数字3桁、ハイフン、数字4桁の並びのみ許可する
@@ -9,6 +9,7 @@ class OrderAddress
     validates :city
     validates :addresses
     validates :phone_number, format: { with: /\A\d{10,11}\z/}
+    validates :token
     # order_addressクラスにはアソシエーションを定義することはできないため,バリデーションを新たに設定
     validates :user_id
     validates :item_id
