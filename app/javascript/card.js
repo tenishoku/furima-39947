@@ -11,7 +11,6 @@ const pay = () => {
   numberElement.mount('#number-form');
   expiryElement.mount('#expiry-form');
   cvcElement.mount('#cvc-form');
-  // debugger
   const form = document.getElementById('charge-form')
   console.log(form)
   form.addEventListener("submit", (e) => {
