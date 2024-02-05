@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    item_name              { Faker::Lorem.sentence }
+    item_name              { Faker::Lorem.sentence(word_count: 2) }
     item_info              { Faker::Lorem.sentence }
     category_id            { Faker::Number.between(from: 2, to: 11) }
     sales_status_id        { Faker::Number.between(from: 2, to: 7) }
